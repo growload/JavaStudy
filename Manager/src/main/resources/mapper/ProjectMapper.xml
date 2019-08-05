@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinyin.manager.mapper.ProjectMapper">
+    <resultMap id="BaseResultMap" type="com.xinyin.manager.entity.Project">
+        <constructor>
+            <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+            <arg column="pro_id" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="order_id" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="serial_number" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="begin_time" javaType="java.util.Date" jdbcType="DATE"/>
+            <arg column="end_time" javaType="java.util.Date" jdbcType="DATE"/>
+            <arg column="build_unit" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="user_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+            <arg column="contract_money" javaType="java.lang.Double" jdbcType="DOUBLE"/>
+            <arg column="judge_money" javaType="java.lang.Double" jdbcType="DOUBLE"/>
+            <arg column="manage_money" javaType="java.lang.Double" jdbcType="DOUBLE"/>
+            <arg column="taxes" javaType="java.lang.Double" jdbcType="DOUBLE"/>
+            <arg column="build_money" javaType="java.lang.Double" jdbcType="DOUBLE"/>
+            <arg column="return_money" javaType="java.lang.Double" jdbcType="DOUBLE"/>
+            <arg column="profit" javaType="java.lang.Double" jdbcType="DOUBLE"/>
+            <arg column="remark" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, pro_id, name, order_id, serial_number, begin_time, end_time, build_unit, user_id, 
+    contract_money, judge_money, manage_money, taxes, build_money, return_money, profit, 
+    remark
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from base_project
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from base_project
+        where id IN
+        <foreach collection="array" open="(" separator="," close=")" item="id">
+            #{id}
+        </foreach>
+
+    </delete>
+    <insert id="insert" parameterType="com.xinyin.manager.entity.Project">
+    insert into base_project (id, pro_id, name,
+      order_id, serial_number, begin_time,
+      end_time, build_unit, user_id,
+      contract_money, judge_money, manage_money,
+      taxes, build_money, return_money,
+      profit, remark)
+    values (#{id,jdbcType=BIGINT}, #{proId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+      #{orderId,jdbcType=VARCHAR}, #{serialNumber,jdbcType=VARCHAR}, #{beginTime,jdbcType=DATE},
+      #{endTime,jdbcType=DATE}, #{buildUnit,jdbcType=VARCHAR}, #{userId,jdbcType=BIGINT},
+      #{contractMoney,jdbcType=DOUBLE}, #{judgeMoney,jdbcType=DOUBLE}, #{manageMoney,jdbcType=DOUBLE},
+      #{taxes,jdbcType=DOUBLE}, #{buildMoney,jdbcType=DOUBLE}, #{returnMoney,jdbcType=DOUBLE},
+      #{profit,jdbcType=DOUBLE}, #{remark,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.xinyin.manager.entity.Project">
+        insert into base_project
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="proId != null">
+                pro_id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="orderId != null">
+                order_id,
+            </if>
+            <if test="serialNumber != null">
+                serial_number,
+            </if>
+            <if test="beginTime != null">
+                begin_time,
+            </if>
+            <if test="endTime != null">
+                end_time,
+            </if>
+            <if test="buildUnit != null">
+                build_unit,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="contractMoney != null">
+                contract_money,
+            </if>
+            <if test="judgeMoney != null">
+                judge_money,
+            </if>
+            <if test="manageMoney != null">
+                manage_money,
+            </if>
+            <if test="taxes != null">
+                taxes,
+            </if>
+            <if test="buildMoney != null">
+                build_money,
+            </if>
+            <if test="returnMoney != null">
+                return_money,
+            </if>
+            <if test="profit != null">
+                profit,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="proId != null">
+                #{proId,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="orderId != null">
+                #{orderId,jdbcType=VARCHAR},
+            </if>
+            <if test="serialNumber != null">
+                #{serialNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="beginTime != null">
+                #{beginTime,jdbcType=DATE},
+            </if>
+            <if test="endTime != null">
+                #{endTime,jdbcType=DATE},
+            </if>
+            <if test="buildUnit != null">
+                #{buildUnit,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="contractMoney != null">
+                #{contractMoney,jdbcType=DOUBLE},
+            </if>
+            <if test="judgeMoney != null">
+                #{judgeMoney,jdbcType=DOUBLE},
+            </if>
+            <if test="manageMoney != null">
+                #{manageMoney,jdbcType=DOUBLE},
+            </if>
+            <if test="taxes != null">
+                #{taxes,jdbcType=DOUBLE},
+            </if>
+            <if test="buildMoney != null">
+                #{buildMoney,jdbcType=DOUBLE},
+            </if>
+            <if test="returnMoney != null">
+                #{returnMoney,jdbcType=DOUBLE},
+            </if>
+            <if test="profit != null">
+                #{profit,jdbcType=DOUBLE},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.xinyin.manager.entity.Project">
+        update base_project
+        <set>
+            <if test="proId != null">
+                pro_id = #{proId,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="orderId != null">
+                order_id = #{orderId,jdbcType=VARCHAR},
+            </if>
+            <if test="serialNumber != null">
+                serial_number = #{serialNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="beginTime != null">
+                begin_time = #{beginTime,jdbcType=DATE},
+            </if>
+            <if test="endTime != null">
+                end_time = #{endTime,jdbcType=DATE},
+            </if>
+            <if test="buildUnit != null">
+                build_unit = #{buildUnit,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="contractMoney != null">
+                contract_money = #{contractMoney,jdbcType=DOUBLE},
+            </if>
+            <if test="judgeMoney != null">
+                judge_money = #{judgeMoney,jdbcType=DOUBLE},
+            </if>
+            <if test="manageMoney != null">
+                manage_money = #{manageMoney,jdbcType=DOUBLE},
+            </if>
+            <if test="taxes != null">
+                taxes = #{taxes,jdbcType=DOUBLE},
+            </if>
+            <if test="buildMoney != null">
+                build_money = #{buildMoney,jdbcType=DOUBLE},
+            </if>
+            <if test="returnMoney != null">
+                return_money = #{returnMoney,jdbcType=DOUBLE},
+            </if>
+            <if test="profit != null">
+                profit = #{profit,jdbcType=DOUBLE},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.xinyin.manager.entity.Project">
+    update base_project
+    set pro_id = #{proId,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      order_id = #{orderId,jdbcType=VARCHAR},
+      serial_number = #{serialNumber,jdbcType=VARCHAR},
+      begin_time = #{beginTime,jdbcType=DATE},
+      end_time = #{endTime,jdbcType=DATE},
+      build_unit = #{buildUnit,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=BIGINT},
+      contract_money = #{contractMoney,jdbcType=DOUBLE},
+      judge_money = #{judgeMoney,jdbcType=DOUBLE},
+      manage_money = #{manageMoney,jdbcType=DOUBLE},
+      taxes = #{taxes,jdbcType=DOUBLE},
+      build_money = #{buildMoney,jdbcType=DOUBLE},
+      return_money = #{returnMoney,jdbcType=DOUBLE},
+      profit = #{profit,jdbcType=DOUBLE},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+    <!-- 获取项目列表 -->
+    <select id="getProjectList" resultType="com.xinyin.manager.entity.Project">
+        SELECT * FROM base_project
+        WHERE
+        user_id = #{userId}
+        <if test="name != null">
+            AND name LIKE '%' #{name} '%'
+        </if>
+        LIMIT #{offset},#{pageSize}
+    </select>
+
+    <!--  获取项目总数  -->
+    <select id="getProjectCount" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM base_project
+        WHERE
+        user_id = #{userId}
+        <if test="name != null">
+            AND name LIKE '%' #{name} '%'
+        </if>
+    </select>
+
+    <!-- 获取项目详情以及用料详情   -->
+    <select id="getProjectDetail" resultType="com.xinyin.manager.http.response.entity.ResponseBodyForProject">
+        SELECT a.*, b.name AS materialName,b.type AS materialType,b.count AS materialCount,b.price AS materialPrice
+        FROM base_project a
+        LEFT JOIN base_material b ON b.project_id = a.id
+        WHERE  a.id = #{id}
+    </select>
+
+</mapper>
