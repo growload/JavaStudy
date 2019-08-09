@@ -20,4 +20,4 @@ public enum Day {
         this.index = index;
     }
 
-    }
+}

@@ -12,7 +12,9 @@ public class MyDay {
     // 类似单例模式的想法
 
     // 构造方法私有
-    private MyDay(){}
+    private MyDay() {
+    }
+
     // 所有对象都是属性
     public static final MyDay MONDAY = new MyDay();
     public static final MyDay TUESDAY = new MyDay();

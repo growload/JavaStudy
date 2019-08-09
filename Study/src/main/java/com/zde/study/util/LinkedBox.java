@@ -76,8 +76,8 @@ public class LinkedBox implements Box {
         if (index < (size >> 1)) {
             // 从前往后找比较快
             targetNode = first;
-            for (int i = 0; i< index;i++){
-                targetNode =  targetNode.next;
+            for (int i = 0; i < index; i++) {
+                targetNode = targetNode.next;
             }
         } else {
             // 从后往前找
@@ -98,14 +98,14 @@ public class LinkedBox implements Box {
         // 找到当前node的下一个
         Node next = targetNode.next;
         // 删除节点对象
-        if (prev==null){
+        if (prev == null) {
             // 当前节点就是第一个
             first = next;
         } else {
             prev.next = next;
             targetNode.prev = null;
         }
-        if (next==null){
+        if (next == null) {
             // 当前节点就是第一个
             last = prev;
         } else {
