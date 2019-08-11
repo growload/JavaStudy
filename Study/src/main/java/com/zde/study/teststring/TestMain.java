@@ -12,5 +12,9 @@ public class TestMain {
         System.out.println(ok);
         String str = testString.reverseAndConcat("abc");
         System.out.println(str);
+        boolean result1 = testString.isPalindrome("acba");
+        System.out.println(result1);
+        System.out.println(testString.moveToRight("helloworld", 2));
+
     }
 }
