@@ -1,9 +1,5 @@
 package com.zde.study.testfile;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 /**
  * @version v1.0
  * @author: zdefys
@@ -11,7 +7,7 @@ import java.util.Date;
  */
 public class TestFile {
     public static void main(String[] args) {
-        File file = new File("E://学习/Java/test.txt");
+        /*File file = new File("E://学习/Java/test.txt");
         //文件本身的属性
         System.out.println(file.canExecute());//文件是否可执行
         System.out.println(file.canRead());//文件是否可读
@@ -35,7 +31,20 @@ public class TestFile {
         System.out.println(absolutePath);
         //获取文件的名字
         String name = file.getName();
-        System.out.println(name);
+        System.out.println(name);*/
+
+
+//        File file = new File("E://学习//aaa");
+        /*try {
+            //创建新的文件
+            boolean value = file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+        //创建新的目录
+//        boolean mkdir = file.mkdir();
+
+
 
     }
 }
